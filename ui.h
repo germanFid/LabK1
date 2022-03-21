@@ -1,11 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int getIntChoice(int n, int choices)
+void clearExtraInput()
 {
-
+    int c;
+    while((c = getchar()) != '\n' && c != EOF) {}
 }
 
-void showmenu()
+int getIntChoice(int n, int* choices)
+{
+    char buf[3];
+
+    scanf("%3s", buf);
+    clearExtraInput();
+
+    char* end;
+    int choice = (int) strtol(buf, &end, 10);
+
+    for (size_t i = 0; i < n; i++)
+    {
+        if(choices[i] == choice)
+            return choice;
+    }
+    
+    return -1;
+}
+
+void showMenu()
 {
     printf("1. Create new good configuration\n"
     "2. Save current configuration to file\n"

@@ -33,5 +33,5 @@ void showMenu()
     "3. Import configuration from file\n"
     "4. View/edit current configuration\n"
     "5. Calculate price per item\n\n"
-    "0. Exit\n");
+    "99. Exit\n");
 }

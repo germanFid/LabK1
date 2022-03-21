@@ -17,6 +17,9 @@ int getIntChoice(int n, int* choices)
     char* end;
     int choice = (int) strtol(buf, &end, 10);
 
+    if (choice == 0)
+        return -1;
+
     for (size_t i = 0; i < n; i++)
     {
         if(choices[i] == choice)

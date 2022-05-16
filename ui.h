@@ -56,8 +56,7 @@ void showMenu()
     printf("1. Create new good configuration\n"
     "2. Save current configuration to file\n"
     "3. Import configuration from file\n"
-    "4. View/edit current configuration\n"
-    "5. Calculate price per item\n\n"
+    "4. View current configuration\n"
     "99. Exit\n");
 }
 

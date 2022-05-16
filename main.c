@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
 
             if (len)
             {
-                printf("Rewrite %s?\n1-Yes\2-No", fname);
+                printf("Rewrite %s?\n1-Yes\n2-No\n", fname);
                 int ch[2] = {1, 2};
                 int res = getIntChoice(2, ch);
 

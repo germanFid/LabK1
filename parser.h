@@ -148,7 +148,7 @@ int readPrices (const char* filename, struct Prices* prices)
 
     while ((read = getline(&line, &len, fp)) != -1) {
         // printf("Retrieved line of length %zu:\n", read);
-        printf("%s", line);
+        // printf("%s", line);
 
         char buf[200];
         strcpy(buf, line);
@@ -163,7 +163,7 @@ int readPrices (const char* filename, struct Prices* prices)
         int res = 100;
         int resCounter = 1;
 
-        printf("=== %d %d ===\n", lineCount, res);
+        // printf("=== %d %d ===\n", lineCount, res);
 
         long i;
         pch = strtok (NULL, " ");
@@ -179,9 +179,9 @@ int readPrices (const char* filename, struct Prices* prices)
             char* end;
 
             // Обработка pch
-            printf("%s|", pch);
+            // printf("%s|", pch);
             i = strtol(pch, &end, 10);
-            printf("%d\n", (int)i);
+            // printf("%d\n", (int)i);
 
             if (i != LONG_MAX && i != LONG_MIN)
             {

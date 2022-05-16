@@ -73,6 +73,7 @@ int main(int argc, char* argv[])
             break;
         
         case 2:
+        {
             res = 1;
             char fname[20] = "";
             while (res)
@@ -87,7 +88,6 @@ int main(int argc, char* argv[])
                 break;
             }
 
-            printf("%s\n", fname);
             FILE* fp = fopen(fname, "rwb");
 
             if (fp == NULL)
@@ -122,14 +122,69 @@ int main(int argc, char* argv[])
             char buf[20] = "";
             itoa(conf._bytes, buf);
 
-            printf("======== %s", buf);
+            printf("======== %s\n", buf);
 
             fseek(fp, SEEK_SET, 0);
             fprintf(fp, "%s", buf);
             printf("Success!\n");
             fclose(fp);
             break;
+        }
+        
+        case 3:
+        {
+            res = 1;
+            char fname[20] = "";
+            while (res)
+            {
+                printf("Enter 99 to return to menu\nEnter Filename (less than 20 symbols)\n>");
+                res = getString20(fname);    
+                printf("%d", res);    
+            }
 
+            if(!strcmp("99", fname))
+            {
+                break;
+            }
+
+            FILE* fp = fopen(fname, "r");
+            if (fp == NULL)
+            {
+                printf("Wrong filename!\n");
+                break;
+            }
+
+            char* line = NULL;
+            size_t len = 0;
+            ssize_t read;
+            
+            read = getline(&line, &len, fp);
+            if (read != -1)
+            {
+                int i = atoi(line);
+                if (i == INT_MAX)
+                {
+                    printf("Loading Error (overflow)!\n");
+                    fclose(fp);
+                    break;
+                }
+
+                if (i == INT_MIN)
+                {
+                    printf("Zero or incorrect confuguration");
+                    fclose(fp);
+                    break;
+                }
+
+                conf._bytes = i;
+                printf("Success!\n");
+                break;
+            }
+        // printf("Retrieved line of length %zu:\n", read);
+        // printf("%s", line);
+
+            break;
+        }
         case 4:
             printInfo(&conf, &conf._Lamp, &prs);
             break;
